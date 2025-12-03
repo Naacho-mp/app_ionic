@@ -12,35 +12,41 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- CONTENEDOR CENTRAL -->
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-
     <!-- CARD / CONTENEDOR QUE ENVUELVE EL FORM -->
-    <div class="p-4 w-100" style="max-width: 400px; border: 1px solid #ccc; border-radius: 12px;">
+    <div class="p-4 w-100">
 
       <!-- TITULO -->
-      <h2 class="text-center mb-4">Bienvenido a CGE</h2>
+      <h2 class="text-center mb-5 mt-4">Bienvenido a CGE</h2>
 
-      <form class="row g-3">
+      <!-- FORMULARIO -->
+      <form class="row g-3" (ngSubmit)="onLogin()" #loginForm="ngForm">
 
-        <div class="col-md-12">
-          <label for="emailCliente" class="form-label">Email</label>
-          <input type="email" class="form-control" id="emailCliente">
-        </div>
-
-        <div class="col-md-12">
-          <label for="contrasenaCliente" class="form-label">Password</label>
-          <input type="password" class="form-control" id="contrasenaCliente">
-        </div>
-
+        <!-- EMAIL -->
         <div class="col-12">
-          <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+          <label for="emailCliente" class="form-label">Email</label>
+          <input type="email" id="emailCliente" class="form-control" name="email_contacto" [(ngModel)]="email_contacto"
+            required>
         </div>
 
+        <!-- PASSWORD -->
+        <div class="col-12 mb-3" >
+          <label for="contrasenaCliente" class="form-label">Password</label>
+          <input type="password" id="contrasenaCliente" class="form-control" name="password" [(ngModel)]="password"
+            required>
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div class="col-12" *ngIf="errorMessage">
+          <ion-text color="danger">{{ errorMessage }}</ion-text>
+        </div>
+
+        <!-- BOTON LOGIN -->
+        <div class="col-12">
+          <ion-button type="submit" expand="block" [disabled]="isLoading || !loginForm.form.valid">
+            <ion-spinner *ngIf="isLoading" name="dots"></ion-spinner>
+            <span *ngIf="!isLoading">Iniciar Sesión</span>
+          </ion-button>
+        </div>
       </form>
-
     </div>
-
-  </div>
-
 </ion-content>

@@ -13,43 +13,46 @@
   </ion-header>
 
   <!-- CONTENEDOR CENTRAL -->
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="p-4 w-100">
+      <!-- Titulo principal -->
+      <h2 class="text-center mb-5 mt-4">Bienvenido a CGE</h2>
 
-    <!-- CARD / CONTENEDOR -->
-    <div class="p-4 w-100" style="max-width: 400px; border: 1px solid #ccc; border-radius: 12px;">
+      <!-- MENSAJES DE ERROR / ÉXITO  en el caso de que no calcen las contraseñas al crearlas-->
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
-      <!-- TITULO -->
-      <h2 class="text-center mb-4">Bienvenido a CGE</h2>
-
-      <form class="row g-3">
+      <!-- FORMULARIO -->
+      <form (ngSubmit)="cambiarPassword()" #cambiarPasswordForm="ngForm">
 
         <!-- CONTRASEÑA ACTUAL -->
-        <div class="col-md-12">
+        <div class="mb-3">
           <label for="actualCliente" class="form-label">Contraseña Actual</label>
-          <input type="password" class="form-control" id="actualCliente">
+          <input type="password" id="actualCliente" class="form-control" name="passwordActual" [(ngModel)]="passwordActual"
+            required>
         </div>
 
         <!-- NUEVA CONTRASEÑA -->
-        <div class="col-md-12">
+        <div class="mb-3">
           <label for="nuevaCliente" class="form-label">Nueva Contraseña</label>
-          <input type="password" class="form-control" id="nuevaCliente">
+          <input type="password" id="nuevaCliente" class="form-control" name="passwordNueva" [(ngModel)]="passwordNueva"
+            required>
         </div>
 
         <!-- CONFIRMAR CONTRASEÑA -->
-        <div class="col-md-12">
+        <div class="mb-4">
           <label for="confirmarCliente" class="form-label">Confirmar Contraseña</label>
-          <input type="password" class="form-control" id="confirmarCliente">
+          <input type="password" id="confirmarCliente" class="form-control" name="confirmarPassword" [(ngModel)]="confirmarPassword"
+            required>
         </div>
 
         <!-- BOTÓN -->
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary w-100">Cambiar</button>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading || !cambiarPasswordForm.form.valid">
+            <span *ngIf="!isLoading">Cambiar</span>
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+          </button>
         </div>
 
       </form>
-
     </div>
-
-  </div>
-
 </ion-content>

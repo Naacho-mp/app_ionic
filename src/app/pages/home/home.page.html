@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Panel de Cliente</ion-title>
+    <ion-title>
+      Panel de Cliente
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,29 +10,34 @@
 
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Panel de Cliente</ion-title>
+      <ion-title>
+        Bienvenido Cliente: {{ cliente?.nombre_razon || 'Cargando...' }}
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
   <!-- CONTENEDOR CENTRAL -->
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
 
-    <!-- CARD / CONTENEDOR -->
-    <div class="p-4 w-100" style="max-width: 400px; border: 1px solid #ccc; border-radius: 12px;">
+  <!-- href para cerrar la sesion, que se encarga de borrar el localstorage con los datos del cliente -->
+  <div class="d-flex justify-content-end">
+    <a href="#" class="text-danger" (click)="logout(); $event.preventDefault()">Cerrar Sesión </a>
+  </div>
 
-      <!-- TITULO PRINCIPAL -->
-      <h2 class="text-center mb-2">Panel de Cliente</h2>
+  <div class="p-4 w-100">
+      <!-- Titulo pricipal de la page-->
+      <h1 class="text-center mb-3">CGE Clientes</h1>
+      <!-- Subtitulo con el nombre del cliente -->
+      <h2 class="text-start mb-4 fs-5">Bienvenido(a): {{ cliente?.nombre_razon || 'Cargando...' }}</h2>
 
-      <!-- SUBTITULO -->
-      <p class="text-center mb-4" style="font-size: 1.1rem; color: #0d6efd;">
+      <p class="text-center mb-5" style="font-size: 1.1rem; color: #0d6efd;">
         ¿Qué deseas ver?
       </p>
 
       <!-- OPCIÓN 1 -->
       <div class="mb-4">
         <button class="btn btn-primary w-100 mb-2">Mis Medidores</button>
-        <p class="text-center" style="font-size: 0.9rem; color: #0d6efd;">
-          Aquí podrás ver todos los medidores que estén vinculados a ti.
+        <p class="text-center mb-3" style="font-size: 0.9rem; color: #0d6efd;">
+          Accede a todos los medidores que estén vinculados a ti.
         </p>
       </div>
 
@@ -38,12 +45,12 @@
       <div>
         <button class="btn btn-primary w-100 mb-2">Mis Lecturas</button>
         <p class="text-center" style="font-size: 0.9rem; color: #0d6efd;">
-          Aquí podrás ver las lecturas de tus medidores que estén vinculados a ti.
+          Accede a las lecturas de tus medidores que estén vinculados a ti.
         </p>
       </div>
 
     </div>
 
-  </div>
+
 
 </ion-content>
