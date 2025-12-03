@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Inicio de Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inicio de Sesión</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- CONTENEDOR CENTRAL -->
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+    <!-- CARD / CONTENEDOR QUE ENVUELVE EL FORM -->
+    <div class="p-4 w-100" style="max-width: 400px; border: 1px solid #ccc; border-radius: 12px;">
+
+      <!-- TITULO -->
+      <h2 class="text-center mb-4">Bienvenido a CGE</h2>
+
+      <form class="row g-3">
+
+        <div class="col-md-12">
+          <label for="emailCliente" class="form-label">Email</label>
+          <input type="email" class="form-control" id="emailCliente">
+        </div>
+
+        <div class="col-md-12">
+          <label for="contrasenaCliente" class="form-label">Password</label>
+          <input type="password" class="form-control" id="contrasenaCliente">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</ion-content>
