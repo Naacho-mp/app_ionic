@@ -29,7 +29,7 @@ CGE App permite a los clientes registrados en la plataforma web de CGE acceder a
 ## Requisitos Previos
 A instalar antes de iniciar:
 
-Node.js 
-npm (v8 o superior)
-Ionic CLI (npm install -g @ionic/cli)
-Angular CLI 
+- Node.js 
+- npm (v8 o superior)
+- Ionic CLI (npm install -g @ionic/cli)
+- Angular CLI 
