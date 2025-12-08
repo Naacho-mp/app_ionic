@@ -17,5 +17,13 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
-  }
+  },
+  {
+    path: 'medidores',
+    loadComponent: () => import('./pages/medidores/medidores.page').then(m => m.MedidoresPage)
+  },
+  {
+    path: 'lecturas',
+    loadComponent: () => import('./pages/lecturas/lecturas.page').then(m => m.LecturasPage)
+  },
 ]

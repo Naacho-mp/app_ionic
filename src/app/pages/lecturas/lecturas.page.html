@@ -12,13 +12,26 @@
   </ion-header>
 
   <div class="container mt-4">
-
     <!-- Título -->
-    <h2 class="mb-3">Mis Lecturas</h2>
+    <img src="assets/cge.logo.png" style="width: 80px; height: auto; display: block; margin: 0 auto;" [routerLink]="'/home'">
+    <div class="d-flex align-items-center gap-2">
+      <a [routerLink]="'/home'" class="fs-3 text-decoration-none text-dark mb-3">&#x2770;</a>
+      <h2 class="mb-3">Mis Lecturas</h2>
+    </div>
 
-    <!-- Contenedor con borde -->
-    <div class="card p-3 shadow-sm">
-      <table class="table table-bordered">
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="text-center">
+      <ion-spinner></ion-spinner>
+      <p>Cargando lecturas...</p>
+    </div>
+
+    <!-- Error -->
+    <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Tabla de lecturas -->
+      <table class="table" *ngIf="!isLoading && lecturas.length > 0">
         <thead>
         <tr>
           <th scope="col">Código</th>
@@ -28,28 +41,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>John</td>
-          <td>Doe</td>
-          <td>@social</td>
+        <tr *ngFor="let lectura of lecturas">
+          <td>{{ lectura.codigo_medidor }}</td>
+          <td>{{ lectura.lectura_kwh }}</td>
+          <td>{{ nombreMes(lectura.mes) }}</td>
+          <td>{{ lectura.anio }}</td>
         </tr>
         </tbody>
       </table>
-    </div>
 
+
+    <!-- Sin lecturas -->
+    <div class="card p-3 shadow-sm text-center" *ngIf="!isLoading && lecturas.length === 0 && !errorMessage">
+      <p>No hay lecturas registradas</p>
+    </div>
   </div>
 
 </ion-content>

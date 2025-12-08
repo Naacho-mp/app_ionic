@@ -16,21 +16,22 @@
     <div class="p-4 w-100">
 
       <!-- TITULO -->
-      <h2 class="text-center mb-5 mt-4">Bienvenido a CGE</h2>
+      <h2 class="text-center mt-4">Bienvenido a: </h2>
+      <ion-img src="assets/cge.logo.png" style="width: 150px; margin: 0 auto;"></ion-img>
 
       <!-- FORMULARIO -->
       <form class="row g-3" (ngSubmit)="onLogin()" #loginForm="ngForm">
 
         <!-- EMAIL -->
         <div class="col-12">
-          <label for="emailCliente" class="form-label">Email</label>
+          <label for="emailCliente" class="form-label">Correo Electrónico</label>
           <input type="email" id="emailCliente" class="form-control" name="email_contacto" [(ngModel)]="email_contacto"
             required>
         </div>
 
         <!-- PASSWORD -->
         <div class="col-12 mb-3" >
-          <label for="contrasenaCliente" class="form-label">Password</label>
+          <label for="contrasenaCliente" class="form-label">Contraseña</label>
           <input type="password" id="contrasenaCliente" class="form-control" name="password" [(ngModel)]="password"
             required>
         </div>
