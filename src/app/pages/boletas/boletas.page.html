@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Boletas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mis Boletas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container mt-4">
+    <!-- Logo principal de cge -->
+    <img src="assets/cge.logo.png" style="width: 80px; height: auto; display: block; margin: 0 auto;" [routerLink]="'/home'">
+
+    <!-- Título y back -->
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <a [routerLink]="'/home'" class="fs-3 text-decoration-none text-dark">&#x2770;</a>
+      <h2 class="mb-0">Mis Boletas</h2>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="text-center">
+      <ion-spinner></ion-spinner>
+      <p>Cargando boletas...</p>
+    </div>
+
+    <!--  msje de error -->
+    <div *ngIf="errorMessage && !isLoading" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Form para la busqueda -->
+    <div class="d-flex gap-2 mb-3" style="flex-wrap: nowrap;">
+
+      <!-- ingresar el mes -->
+      <div style="flex: 1;">
+        <label>Mes</label>
+        <select [(ngModel)]="mes" class="form-control">
+          <option value="">Seleccione un mes</option>
+          <option *ngFor="let mesNombre of meses; let i = index" [value]="i + 1">
+            {{ mesNombre }}
+          </option>
+        </select>
+      </div>
+
+      <!-- ingresar el año -->
+      <div style="flex: 1;">
+        <label>Año</label>
+        <input type="number" class="form-control" [(ngModel)]="anio" placeholder="Ej: 2024">
+      </div>
+
+      <!-- Botón Buscar -->
+      <div style="flex: 1;">
+        <button class="btn btn-primary w-100 mt-4" (click)="buscarBoletas()" [disabled]="isLoading">
+          {{ isLoading ? 'Buscando...' : 'Buscar' }}
+        </button>
+      </div>
+
+    </div>
+
+
+    <!-- Tabla de resultados de las boletas -->
+    <div class="table-responsive" *ngIf="boletas.length > 0">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Año</th>
+          <th>Kwh</th>
+          <th>Total</th>
+          <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of boletas">
+          <td>{{ nombreMes(b.mes) }}</td>
+          <td>{{ b.anio }}</td>
+          <td>{{ b.kwh_total }}</td>
+          <td>{{ b.total_pagar }}</td>
+          <td>
+            <button class="btn btn-success btn-sm" (click)="descargarPDF(b)">
+              Descargar
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sin resultados -->
+    <div class="card p-3 shadow-sm text-center mt-3" *ngIf="!isLoading && boletas.length === 0 && !errorMessage">
+      <p>No se encontraron boletas para el período seleccionado.</p>
+    </div>
+
+  </div>
+</ion-content>
