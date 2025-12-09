@@ -1,8 +1,8 @@
 # CGE - Aplicación Móvil 
-Aplicación móvil desarrollada en Ionic + Angular para que los clientes de CGE puedan gestionar sus medidores y lecturas de consumo desde sus dispositivos móviles.
+Aplicación móvil desarrollada en Ionic + Angular para que los clientes de CGE puedan visualizar sus medidores, lecturas de consumo, y boletas desde sus dispositivos móviles.
 
 ## Descripción
-CGE App permite a los clientes registrados en la plataforma web de CGE acceder a su información de sus medidores y el consumo de los mismos de forma rápida y sencilla desde cualquier dispositivo móvil.
+CGE App permite a los clientes registrados en la plataforma web de CGE acceder a su información de sus medidores, el consumo de los mismos, y las boletas de forma rápida y sencilla desde cualquier dispositivo móvil.
 
 ## Instrucciones para la puesta en funcionamiento del Proyecto Móvil CGE
 - Descargar o clonar el proyecto via GitHub a través del siguiente Link: https://github.com/Naacho-mp/app_ionic
@@ -18,7 +18,8 @@ CGE App permite a los clientes registrados en la plataforma web de CGE acceder a
 - Primer Login Seguro: Al iniciar sesión por primera vez, se asigna una contraseña por defecto (0000) y se redirige automáticamente al cambio de contraseña.
 - Cambio de Contraseña: Permite actualizar la contraseña de forma segura.
 - Visualización de Medidores: Consulta de todos los medidores asociados al cliente logueado.
-- Lecturas de Consumo: Visualización del historial de lecturas de cada medidor asociado al cliente. 
+- Lecturas de Consumo: Visualización del historial de lecturas de cada medidor asociado al cliente.
+- Visualización de Boletas: Los clientes podrán visualizar sus boletas filtradas por mes y año, y descargarlas de igual forma. 
 
 
 ## Tecnologías Utilizadas
